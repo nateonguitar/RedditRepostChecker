@@ -3,6 +3,14 @@ import nltk
 import urllib.parse
 from datetime import datetime
 import config
+import argparse
+
+parser = argparse.ArgumentParser(description='Reddit Repost Checker')
+parser.add_argument("--subreddit", required=True, default=None, type=str, help="The subreddit you would like to search")
+
+args = parser.parse_args()
+
+print("Subreddit: {}".format(args.subreddit))
 
 # reddit api login
 reddit = praw.Reddit(
@@ -13,7 +21,13 @@ reddit = praw.Reddit(
     user_agent=config.user_agent
 )
 
-subreddit = reddit.subreddit('Showerthoughts')
+subreddit = None
+try:
+    subreddit = reddit.subreddit(args.subreddit)
+except Exception as e:
+    print(e)
+    quit()
+
 new_posts = subreddit.new(limit=500)
 
 # flags for words, NN == noun
@@ -57,6 +71,7 @@ for submission in new_posts:
             posts.append(post)
 
         if len(posts) > 1: # and num_results < 100:
+            print('')
             print('-------------------------------------------------------------------------------------------')
             print('')
             print('OP:         {}'.format(submission.url))
@@ -80,6 +95,7 @@ for submission in new_posts:
                 if i == 10:
                     break
             print('')
-
+        else:
+            print('.', end='')
     except Exception as e:
         print(e)
