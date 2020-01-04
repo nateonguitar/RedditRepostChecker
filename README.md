@@ -24,7 +24,9 @@ Will launch a new window and you can double click the missing dependency to auto
 
 ## Use
 
-`python check.py --subreddit ShowerThoughts` will, when it finds a candidate repost, print something like this:
+`python check.py --subreddit ShowerThoughts --numposts 100`
+
+will get the most recent 100 posts and, when it finds a candidate repost, print something like this:
 
 ```
 -------------------------------------------------------------------------------------------
