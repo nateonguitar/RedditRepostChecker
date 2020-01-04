@@ -1,0 +1,5 @@
+username='username'
+password='password1234'
+user_agent='repeat-post-checker by u/nateonguitar'
+client_id='<client-id-from-app>'
+client_secret='<client-secret-from-app>'
