@@ -4,11 +4,6 @@ import urllib.parse
 from datetime import datetime
 import config
 
-# to run the importer when nltk says it can't find a module like "punkt"
-# >>> import nltk
-# >>> nltk.download()
-# Will launch a new window and you can double click the missing dependency to auto download
-
 # flags for words, NN == noun
 # https://pythonprogramming.net/part-of-speech-tagging-nltk-tutorial/
 
