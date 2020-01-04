@@ -7,7 +7,6 @@ import argparse
 import difflib
 
 def diff(s1, s2):
-    ''' --word-diff=porcelain clone'''
     delta = difflib.Differ().compare(s1.split(), s2.split())
     difflist = []
     fullline = ''
