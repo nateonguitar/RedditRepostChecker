@@ -4,9 +4,6 @@ import urllib.parse
 from datetime import datetime
 import config
 
-# flags for words, NN == noun
-# https://pythonprogramming.net/part-of-speech-tagging-nltk-tutorial/
-
 # reddit api login
 reddit = praw.Reddit(
     client_id=config.client_id,
@@ -19,6 +16,8 @@ reddit = praw.Reddit(
 subreddit = reddit.subreddit('Showerthoughts')
 new_posts = subreddit.new(limit=500)
 
+# flags for words, NN == noun
+# https://pythonprogramming.net/part-of-speech-tagging-nltk-tutorial/
 keys = {
     'noun':      ('NN', 'NNS', 'NNP', 'NNPS',),
     'verb':      ('VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ',),
