@@ -7,10 +7,14 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Reddit Repost Checker')
 parser.add_argument("--subreddit", required=True, default=None, type=str, help="The subreddit you would like to search")
+parser.add_argument("--numposts", default=100, type=int, help="The number of posts you want to test.")
 
 args = parser.parse_args()
 
+print('')
 print("Subreddit: {}".format(args.subreddit))
+print("Num Posts: {}".format(args.numposts))
+print('')
 
 # reddit api login
 reddit = praw.Reddit(
@@ -28,7 +32,7 @@ except Exception as e:
     print(e)
     quit()
 
-new_posts = subreddit.new(limit=500)
+new_posts = subreddit.new(limit=args.numposts)
 
 # flags for words, NN == noun
 # https://pythonprogramming.net/part-of-speech-tagging-nltk-tutorial/
